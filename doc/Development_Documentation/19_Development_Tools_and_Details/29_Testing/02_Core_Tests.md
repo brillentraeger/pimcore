@@ -5,7 +5,7 @@ Pimcore uses [Codeception](https://codeception.com/) for testing its core featur
 ## Requirements
 
 1. A Pimcore installation. Read this [guide](../../01_Getting_Started/00_Installation.md) for instructions.
-2. A **dedicated database** used only for testing. In other words, if the Pimcore installation is not only used for testing, create a separate database!
+2. A **dedicated database** for testing purpose only. In other words, if the Pimcore installation is not only used for testing, create a separate database!
 3. Redis cache (optional, but needed for executing cache tests)
 
 ## Executing tests
@@ -22,7 +22,7 @@ Always set
 PIMCORE_TEST=1
 ```
 
-This will switch special directories used for testing (like /var/classes) and prevent that you existing installation gets messed up. 
+This will switch special directories used for testing (like /var/classes) and prevent that your existing installation gets messed up. 
 
 ##### Error reporting 
 
@@ -44,7 +44,7 @@ PIMCORE_TEST_DB_DSN="mysql://[USERNAME]:[PASSWORD]@[HOST]/[DBNAME]" PIMCORE_ENVI
 
 #### Only run a specific suite
 
-Only runs the `model` tests. For a list of suites see the list below.
+Only run the `model` tests. For a list of suites, see the list below.
 
 ```
 PIMCORE_TEST_DB_DSN="mysql://[USERNAME]:[PASSWORD]@[HOST]/[DBNAME]" PIMCORE_ENVIRONMENT=test PIMCORE_TEST=1 vendor/bin/codecept run -c vendor/pimcore/pimcore model
@@ -52,8 +52,8 @@ PIMCORE_TEST_DB_DSN="mysql://[USERNAME]:[PASSWORD]@[HOST]/[DBNAME]" PIMCORE_ENVI
 
 #### Only run a specific test group
 
-This can be a subset of a suite. You also have the option to provide a comma-seperated list of groups.
-For an overview of available groups see the table below. 
+This can be a subset of a suite. You also have the option to provide a comma-separated list of groups.
+For an overview of available groups, see the table below. 
 
 ```
 PIMCORE_TEST_DB_DSN="mysql://[USERNAME]:[PASSWORD]@[HOST]/[DBNAME]" PIMCORE_ENVIRONMENT=test PIMCORE_TEST=1 vendor/bin/codecept run -c vendor/pimcore/pimcore rest -g dataTypeIn    
@@ -61,7 +61,7 @@ PIMCORE_TEST_DB_DSN="mysql://[USERNAME]:[PASSWORD]@[HOST]/[DBNAME]" PIMCORE_ENVI
 
 ##### Redis Cache tests
 
-For Redis, the `PIMCORE_TEST_CACHE_REDIS_DATABASE` option is mandatory. Set to a value that does not conflict to any
+For Redis, the `PIMCORE_TEST_CACHE_REDIS_DATABASE` option is mandatory. Set to a value that does not conflict with any
 other Redis DBs on your system.
 
 ```
@@ -76,7 +76,7 @@ PIMCORE_TEST_DB_DSN="mysql://[USERNAME]:[PASSWORD]@[HOST]/[DBNAME]" PIMCORE_ENVI
 | PIMCORE_ENVIRONMENT                       | test             | Test environment                                                                                                               |
 | PIMCORE_PHP_ERROR_REPORTING               | 32767            | Should be set to E_ALL because Travis uses the same setting.                                                                   |
 | PIMCORE_TEST                              | 1                | **important** this will switch several directories (like /var/classes)                                                         |
-| PIMCORE_TEST_SKIP_DB                      | 1                | Skips DB setup. This does not skip the db-related tests but it<br>reduces the setup time for tests that don't need a database. |
+| PIMCORE_TEST_SKIP_DB                      | 1                | Skips DB setup. This does not skip the db-related tests, but it<br>reduces the setup time for tests that don't need a database. |
 | PIMCORE_TEST_CACHE_REDIS_DATABASE         | 1                | **required for REDIS tests**                                                                                                   |
 | PIMCORE_TEST_CACHE_REDIS_PORT             | defaults to 6379 | Redis port                                                                                                                     |
 | PIMCORE_TEST_CACHE_REDIS_PERSISTENT       |                  |                                                                                                                                |
@@ -91,20 +91,20 @@ PIMCORE_TEST_DB_DSN="mysql://[USERNAME]:[PASSWORD]@[HOST]/[DBNAME]" PIMCORE_ENVI
 
 The tests are organized into suites, each one covering specific areas of the core.
 
-| Suite name | Description                                                    |
-|------------|----------------------------------------------------------------|
-| cache      | Cache tests                                                    |
-| ecommerce  | Ecommerce bundle tests                                         |
-| model      | Dataobject tests                                               |
-| rest       | REST Webservice API tests                                      |
-| service    | Test covering common or shared element tasks (versioning, ...) |
-| unit       | Other tests (may need restructuring)                           |
-| ...        |                                                                |
+| Suite name | Description                                                     |
+|------------|-----------------------------------------------------------------|
+| cache      | Cache tests                                                     |
+| ecommerce  | Ecommerce bundle tests                                          |
+| model      | Dataobject tests                                                |
+| rest       | REST Webservice API tests                                       |
+| service    | Test covering common or shared element tasks (versioning, etc.) |
+| unit       | Other tests (may need restructuring)                            |
+| ...        |                                                                 |
 
 #### Groups
 
-The following table lists all groups currently used by Pimcore's core tests. If you extend the tests or write new
-ones please tag them accordingly.
+The following table lists all groups currently used by Pimcore's core tests. If you extend the tests or add new
+ones, please tag them accordingly.
 
 | Group                              |                                                                        |
 |------------------------------------|------------------------------------------------------------------------|
@@ -146,10 +146,10 @@ The build matrix (which can change at any time) consists of a mixture of
 * different PHP versions (7.2, 7.3, 7.4)
 * different Symfony versions (3.4 and 4)
 
-In addition it
-* verifies the state of the documentation (broken links, etc) 
+In addition, it
+* verifies the state of the documentation (broken links, etc.) 
 * runs [PHPStan](https://github.com/phpstan/phpstan) (PHP Static Analysis Tool). For a list verification performed by
-PHPStan see this [list](https://gist.github.com/carusogabriel/62698312f451589afd956eddac2dc07a). Current level 1. 
+PHPStan, see this [list](https://gist.github.com/carusogabriel/62698312f451589afd956eddac2dc07a). Current level 1. 
 
 ### Build Artifacts
 
@@ -164,7 +164,7 @@ Look for something like this in your job output and open it in your web browser.
 In general, contributions in form extending and improving tests is highly appreciated.
 Please follow the structure and principles described above.
 
-If you have the extend the data model then please have a look at [Model.php](https://github.com/pimcore/pimcore/blob/master/tests/_support/Helper/Model.php).
+If you have the extend the data model, then please have a look at [Model.php](https://github.com/pimcore/pimcore/blob/master/tests/_support/Helper/Model.php).
 There you will find all class definitions used for testing.
 
 ### Perform PHPStan Analysis 
